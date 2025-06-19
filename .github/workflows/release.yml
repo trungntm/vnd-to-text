@@ -25,22 +25,21 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add pom.xml
-          git commit -m "Release: remove -SNAPSHOT from version"
+          git commit -m "Release version $(grep -m1 '<version>' pom.xml | sed -E 's/.*<version>([0-9]+\.[0-9]+\.[0-9]+)<.*<\/version>.*/\1/')"
 
       - name: Deploy release to GitHub Packages
         run: mvn deploy -B --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.X_GITHUB_TOKEN }}
 
-      - name: Bump minor version and add -SNAPSHOT
+      - name: Bump version
         run: |
-          VERSION=$(grep -m1 '<version>' pom.xml | sed -E 's/.*<version>([0-9]+)\.([0-9]+)(.*)<\/version>.*/\1 \2 \3/')
+          VERSION=$(grep -m1 '<version>' pom.xml | sed -E 's/.*<version>([0-9]+)\.([0-9]+)\.([0-9]+)<.*<\/version>.*/\1 \2 \3/')
           MAJOR=$(echo $VERSION | cut -d' ' -f1)
           MINOR=$(echo $VERSION | cut -d' ' -f2)
-          SUFFIX=$(echo $VERSION | cut -d' ' -f3)
+          # Always reset PATCH to 0 and bump MINOR
           NEW_MINOR=$((MINOR+1))
-          sed -i "0,/<version>.*<\/version>/s//<version>${MAJOR}.${NEW_MINOR}-SNAPSHOT<\/version>/" pom.xml
+          sed -i "0,/<version>.*<\/version>/s//<version>${MAJOR}.${NEW_MINOR}.0-SNAPSHOT<\/version>/" pom.xml
           git add pom.xml
-          git commit -m "Bump version to ${MAJOR}.${NEW_MINOR}-SNAPSHOT"
+          git commit -m "Bump version to ${MAJOR}.${NEW_MINOR}.0-SNAPSHOT"
           git push
-
