@@ -6,7 +6,7 @@
 
   <groupId>com.trungtmnguyen</groupId>
   <artifactId>vnd-to-text</artifactId>
-  <version>0.2.4-SNAPSHOT</version>
+  <version>0.2.4</version>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
