@@ -39,7 +39,7 @@ jobs:
           MINOR=$(echo $VERSION | cut -d' ' -f2)
           # Always reset PATCH to 0 and bump MINOR
           NEW_MINOR=$((MINOR+1))
-          sed -i "0,/<version>.*<\/version>/s//<version>${MAJOR}.${NEW_MINOR}.0-SNAPSHOT<\/version>/" pom.xml
+          sed -i "0,/<version>[0-9]\+\.[0-9]\+\.[0-9]\+<\/version>/s//<version>${MAJOR}.${NEW_MINOR}.0-SNAPSHOT<\/version>/" pom.xml
           git add pom.xml
           git commit -m "Bump version to ${MAJOR}.${NEW_MINOR}.0-SNAPSHOT"
           git push
