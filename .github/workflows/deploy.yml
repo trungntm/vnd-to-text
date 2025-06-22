@@ -18,9 +18,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-          server-id: github
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
@@ -32,4 +29,5 @@ jobs:
         run: mvn deploy --settings .github/settings.xml -B --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
 
