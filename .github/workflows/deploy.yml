@@ -26,9 +26,6 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Print GITHUB_* variables
-        run: printenv | grep GITHUB_
-
       - name: Publish to GitHub Packages
         run: mvn deploy --settings .github/settings.xml -B --file pom.xml
         env:
