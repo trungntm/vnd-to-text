@@ -30,7 +30,7 @@ jobs:
         run: printenv | grep GITHUB_
 
       - name: Publish to GitHub Packages
-        run: mvn deploy -B --file pom.xml
+        run: mvn deploy --settings .github/settings.xml -B --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
