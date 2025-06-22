@@ -31,5 +31,6 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: mvn deploy -B --settings .github/settings.xml --file pom.xml
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.X_GITHUB_TOKEN }}
 
