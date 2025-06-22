@@ -42,12 +42,12 @@
     <repository>
       <id>github-release</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/trungntm/mvnrepository</url>
+      <url>https://maven.pkg.github.com/trungntm/vnd-to-text</url>
     </repository>
     <snapshotRepository>
       <id>github-snapshot</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/trungntm/mvnrepository</url>
+      <url>https://maven.pkg.github.com/trungntm/vnd-to-text</url>
     </snapshotRepository>
   </distributionManagement>
 
