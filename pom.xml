@@ -57,10 +57,5 @@
       <name>GitHub Packages</name>
       <url>https://maven.pkg.github.com/trungntm/mvnrepository</url>
     </repository>
-    <snapshotRepository>
-      <id>github-snapshots</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/trungntm/mvnrepositories-snapshots</url>
-    </snapshotRepository>
   </repositories>
 </project>
