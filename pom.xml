@@ -40,12 +40,12 @@
 
   <distributionManagement>
     <repository>
-      <id>github-release</id>
+      <id>github</id>
       <name>GitHub Packages</name>
       <url>https://maven.pkg.github.com/trungntm/mvnrepository</url>
     </repository>
     <snapshotRepository>
-      <id>github-snapshot</id>
+      <id>github</id>
       <name>GitHub Packages</name>
       <url>https://maven.pkg.github.com/trungntm/mvnrepositories</url>
     </snapshotRepository>
